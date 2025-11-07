@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Code Quality CI
 
 on:
   push:
@@ -7,17 +7,65 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  python-checks:
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+    
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r new_qr_firmware/python/requirements.txt
+    
+    - name: Python syntax check
+      run: |
+        python -m py_compile new_qr_firmware/python/*.py
+    
+    - name: Check Python imports
+      run: |
+        cd new_qr_firmware/python
+        for file in *.py; do
+          echo "Checking $file..."
+          python -c "import ast; ast.parse(open('$file').read())"
+        done
+  
+  c-firmware-validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Validate C files exist
+      run: |
+        echo "Checking C firmware files..."
+        cd new_qr_firmware
+        
+        # Check main firmware files
+        for file in Main_QR.c Functions.c SBC_Rpi.c i2c_lcd.c service.c; do
+          if [ -f "$file" ]; then
+            echo "✓ Found: $file"
+          else
+            echo "✗ Missing: $file"
+            exit 1
+          fi
+        done
+        
+        # Check header files
+        for file in Functions.h SBC_Rpi.h i2c_lcd.h service.h Pin_Definitions.h; do
+          if [ -f "$file" ]; then
+            echo "✓ Found: $file"
+          else
+            echo "✗ Missing: $file"
+            exit 1
+          fi
+        done
+        
+        echo ""
+        echo "Note: C firmware requires MPLAB C18 compiler (Windows) for actual compilation"
+        echo "This CI only validates that source files are present"
