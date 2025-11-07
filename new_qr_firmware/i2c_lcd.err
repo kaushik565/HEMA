@@ -1,9 +1,0 @@
-Warning[2066] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 11 : type qualifier mismatch in assignment
-Warning[2066] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 15 : type qualifier mismatch in assignment
-Warning[2066] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 106 : type qualifier mismatch in assignment
-Warning[2066] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 106 : type qualifier mismatch in assignment
-Warning[2066] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 133 : type qualifier mismatch in assignment
-Warning[2066] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 137 : type qualifier mismatch in assignment
-Warning[2066] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 137 : type qualifier mismatch in assignment
-Warning[2058] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 206 : call of function without prototype
-Warning[2058] D:\FINAL PROJECT\new_qr_firmware\i2c_lcd.c 222 : call of function without prototype
