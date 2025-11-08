@@ -1,0 +1,35 @@
+# MPLAB XC8 Compiler Build Artifacts
+*.p1
+*.d
+*.pre
+*.sym
+*.cmf
+*.cof
+*.hxl
+*.lst
+*.obj
+*.rlf
+*.sdb
+funclist
+
+# Output files (keep .hex for releases)
+*.elf
+*.map
+
+# MPLAB X IDE files
+*.mcp
+*.mcw
+*.mcs
+nbproject/
+dist/
+build/
+.generated_files/
+
+# Backup files
+*~
+*.bak
+*.old
+
+# OS specific
+.DS_Store
+Thumbs.db
