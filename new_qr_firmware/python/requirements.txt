@@ -1,0 +1,15 @@
+# Python dependencies for HEMA QR Scanner Testing Jig
+# Raspberry Pi control software
+
+# Serial communication with PIC microcontroller
+pyserial>=3.5
+
+# Web interface for log viewing
+flask>=2.0.0
+
+# Raspberry Pi GPIO (hardware-specific, only needed on RPi)
+# RPi.GPIO>=0.7.0
+
+# Note: tkinter is usually included with Python installation
+# If missing, install python3-tk via system package manager:
+#   sudo apt-get install python3-tk
